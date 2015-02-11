@@ -1,0 +1,9 @@
+E:\ProtobufEditer\ProtobufEditer\bin\Debug\ProtobufEditer.exe.config
+E:\ProtobufEditer\ProtobufEditer\bin\Debug\ProtobufEditer.exe
+E:\ProtobufEditer\ProtobufEditer\bin\Debug\ProtobufEditer.pdb
+E:\ProtobufEditer\ProtobufEditer\obj\Debug\ProtobufEditer.csprojResolveAssemblyReference.cache
+E:\ProtobufEditer\ProtobufEditer\obj\Debug\ProtobufEditer.ProtobufEditer.resources
+E:\ProtobufEditer\ProtobufEditer\obj\Debug\ProtobufEditer.Properties.Resources.resources
+E:\ProtobufEditer\ProtobufEditer\obj\Debug\ProtobufEditer.csproj.GenerateResource.Cache
+E:\ProtobufEditer\ProtobufEditer\obj\Debug\ProtobufEditer.exe
+E:\ProtobufEditer\ProtobufEditer\obj\Debug\ProtobufEditer.pdb
