@@ -36,7 +36,21 @@
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.tabControl = new System.Windows.Forms.TabControl();
+            this.propertyPanel = new System.Windows.Forms.GroupBox();
+            this.nameLbl = new System.Windows.Forms.Label();
+            this.restrictLbl = new System.Windows.Forms.Label();
+            this.nameIpt = new System.Windows.Forms.TextBox();
+            this.defaultIpt = new System.Windows.Forms.TextBox();
+            this.defaultLbl = new System.Windows.Forms.Label();
+            this.restrictList = new System.Windows.Forms.ComboBox();
+            this.commentIpt = new System.Windows.Forms.TextBox();
+            this.numberLbl = new System.Windows.Forms.Label();
+            this.commentLbl = new System.Windows.Forms.Label();
+            this.numberUpDown = new System.Windows.Forms.NumericUpDown();
+            this.typeList = new System.Windows.Forms.ComboBox();
+            this.typeLbl = new System.Windows.Forms.Label();
             this.logBox = new System.Windows.Forms.TextBox();
             this.CompilerLocalBtn = new System.Windows.Forms.Button();
             this.GenerateBtn = new System.Windows.Forms.Button();
@@ -45,19 +59,7 @@
             this.OpenBtn = new System.Windows.Forms.Button();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.treeView = new System.Windows.Forms.TreeView();
-            this.propertyPanel = new System.Windows.Forms.Panel();
-            this.nameLbl = new System.Windows.Forms.Label();
-            this.nameIpt = new System.Windows.Forms.TextBox();
-            this.restrictLbl = new System.Windows.Forms.Label();
-            this.restrictList = new System.Windows.Forms.ComboBox();
-            this.numberLbl = new System.Windows.Forms.Label();
-            this.numberUpDown = new System.Windows.Forms.NumericUpDown();
-            this.typeLbl = new System.Windows.Forms.Label();
-            this.typeList = new System.Windows.Forms.ComboBox();
-            this.commentLbl = new System.Windows.Forms.Label();
-            this.commentIpt = new System.Windows.Forms.TextBox();
-            this.defaultLbl = new System.Windows.Forms.Label();
-            this.defaultIpt = new System.Windows.Forms.TextBox();
+            this.SaveAsBtn = new System.Windows.Forms.Button();
             this.statusStrip.SuspendLayout();
             this.contextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -68,6 +70,10 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
             this.propertyPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numberUpDown)).BeginInit();
             this.SuspendLayout();
@@ -109,32 +115,34 @@
             this.closeToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
             this.contextMenuStrip.Size = new System.Drawing.Size(146, 114);
-            this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Opening);
             // 
             // addMessageToolStripMenuItem
             // 
             this.addMessageToolStripMenuItem.Name = "addMessageToolStripMenuItem";
             this.addMessageToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.addMessageToolStripMenuItem.Text = "Add Message";
+            this.addMessageToolStripMenuItem.Click += new System.EventHandler(this.addMessageToolStripMenuItem_Click);
             // 
             // addFieldToolStripMenuItem
             // 
             this.addFieldToolStripMenuItem.Name = "addFieldToolStripMenuItem";
             this.addFieldToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.addFieldToolStripMenuItem.Text = "Add Field";
-            this.addFieldToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
+            this.addFieldToolStripMenuItem.Click += new System.EventHandler(this.addFieldToolStripMenuItem_Click);
             // 
             // addEnumToolStripMenuItem
             // 
             this.addEnumToolStripMenuItem.Name = "addEnumToolStripMenuItem";
             this.addEnumToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.addEnumToolStripMenuItem.Text = "Add Enum";
+            this.addEnumToolStripMenuItem.Click += new System.EventHandler(this.addEnumToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
@@ -159,6 +167,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.SaveAsBtn);
             this.splitContainer1.Panel2.Controls.Add(this.CompilerLocalBtn);
             this.splitContainer1.Panel2.Controls.Add(this.GenerateBtn);
             this.splitContainer1.Panel2.Controls.Add(this.NewBtn);
@@ -179,26 +188,241 @@
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.tabControl);
+            this.splitContainer2.Panel1.Controls.Add(this.splitContainer3);
+            this.splitContainer2.Panel1.Padding = new System.Windows.Forms.Padding(5);
             this.splitContainer2.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             // 
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.logBox);
+            this.splitContainer2.Panel2.Padding = new System.Windows.Forms.Padding(10, 5, 5, 5);
             this.splitContainer2.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.splitContainer2.Size = new System.Drawing.Size(562, 437);
             this.splitContainer2.SplitterDistance = 254;
             this.splitContainer2.TabIndex = 0;
             // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(5, 5);
+            this.splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.tabControl);
+            this.splitContainer3.Panel1.Padding = new System.Windows.Forms.Padding(5);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.propertyPanel);
+            this.splitContainer3.Panel2.Padding = new System.Windows.Forms.Padding(5);
+            this.splitContainer3.Panel2MinSize = 200;
+            this.splitContainer3.Size = new System.Drawing.Size(552, 244);
+            this.splitContainer3.SplitterDistance = 348;
+            this.splitContainer3.TabIndex = 2;
+            // 
             // tabControl
             // 
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl.Location = new System.Drawing.Point(0, 0);
+            this.tabControl.Location = new System.Drawing.Point(5, 5);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(5);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(562, 254);
+            this.tabControl.Size = new System.Drawing.Size(338, 234);
             this.tabControl.TabIndex = 0;
-            this.tabControl.Click += new System.EventHandler(this.tabControl_Click);
+            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
+            // 
+            // propertyPanel
+            // 
+            this.propertyPanel.Controls.Add(this.nameLbl);
+            this.propertyPanel.Controls.Add(this.restrictLbl);
+            this.propertyPanel.Controls.Add(this.nameIpt);
+            this.propertyPanel.Controls.Add(this.defaultIpt);
+            this.propertyPanel.Controls.Add(this.defaultLbl);
+            this.propertyPanel.Controls.Add(this.restrictList);
+            this.propertyPanel.Controls.Add(this.commentIpt);
+            this.propertyPanel.Controls.Add(this.numberLbl);
+            this.propertyPanel.Controls.Add(this.commentLbl);
+            this.propertyPanel.Controls.Add(this.numberUpDown);
+            this.propertyPanel.Controls.Add(this.typeList);
+            this.propertyPanel.Controls.Add(this.typeLbl);
+            this.propertyPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.propertyPanel.Location = new System.Drawing.Point(5, 5);
+            this.propertyPanel.Margin = new System.Windows.Forms.Padding(5);
+            this.propertyPanel.Name = "propertyPanel";
+            this.propertyPanel.Size = new System.Drawing.Size(190, 234);
+            this.propertyPanel.TabIndex = 1;
+            this.propertyPanel.TabStop = false;
+            this.propertyPanel.Text = "Property";
+            // 
+            // nameLbl
+            // 
+            this.nameLbl.AutoSize = true;
+            this.nameLbl.Location = new System.Drawing.Point(33, 27);
+            this.nameLbl.Name = "nameLbl";
+            this.nameLbl.Size = new System.Drawing.Size(29, 12);
+            this.nameLbl.TabIndex = 0;
+            this.nameLbl.Text = "Name";
+            this.nameLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // restrictLbl
+            // 
+            this.restrictLbl.AutoSize = true;
+            this.restrictLbl.Location = new System.Drawing.Point(9, 81);
+            this.restrictLbl.Name = "restrictLbl";
+            this.restrictLbl.Size = new System.Drawing.Size(53, 12);
+            this.restrictLbl.TabIndex = 2;
+            this.restrictLbl.Text = "Restrict";
+            this.restrictLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // nameIpt
+            // 
+            this.nameIpt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.nameIpt.Location = new System.Drawing.Point(70, 23);
+            this.nameIpt.Name = "nameIpt";
+            this.nameIpt.Size = new System.Drawing.Size(103, 21);
+            this.nameIpt.TabIndex = 1;
+            // 
+            // defaultIpt
+            // 
+            this.defaultIpt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.defaultIpt.Location = new System.Drawing.Point(70, 50);
+            this.defaultIpt.Name = "defaultIpt";
+            this.defaultIpt.Size = new System.Drawing.Size(103, 21);
+            this.defaultIpt.TabIndex = 13;
+            // 
+            // defaultLbl
+            // 
+            this.defaultLbl.AutoSize = true;
+            this.defaultLbl.Location = new System.Drawing.Point(17, 54);
+            this.defaultLbl.Name = "defaultLbl";
+            this.defaultLbl.Size = new System.Drawing.Size(47, 12);
+            this.defaultLbl.TabIndex = 12;
+            this.defaultLbl.Text = "Default";
+            this.defaultLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // restrictList
+            // 
+            this.restrictList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.restrictList.FormattingEnabled = true;
+            this.restrictList.Items.AddRange(new object[] {
+            "required",
+            "optional",
+            "repeated"});
+            this.restrictList.Location = new System.Drawing.Point(70, 77);
+            this.restrictList.Name = "restrictList";
+            this.restrictList.Size = new System.Drawing.Size(103, 20);
+            this.restrictList.TabIndex = 6;
+            // 
+            // commentIpt
+            // 
+            this.commentIpt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.commentIpt.Location = new System.Drawing.Point(70, 160);
+            this.commentIpt.Multiline = true;
+            this.commentIpt.Name = "commentIpt";
+            this.commentIpt.Size = new System.Drawing.Size(103, 57);
+            this.commentIpt.TabIndex = 11;
+            // 
+            // numberLbl
+            // 
+            this.numberLbl.AutoSize = true;
+            this.numberLbl.Location = new System.Drawing.Point(21, 108);
+            this.numberLbl.Name = "numberLbl";
+            this.numberLbl.Size = new System.Drawing.Size(41, 12);
+            this.numberLbl.TabIndex = 4;
+            this.numberLbl.Text = "Number";
+            this.numberLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // commentLbl
+            // 
+            this.commentLbl.AutoSize = true;
+            this.commentLbl.Location = new System.Drawing.Point(15, 164);
+            this.commentLbl.Name = "commentLbl";
+            this.commentLbl.Size = new System.Drawing.Size(47, 12);
+            this.commentLbl.TabIndex = 10;
+            this.commentLbl.Text = "Comment";
+            this.commentLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // numberUpDown
+            // 
+            this.numberUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.numberUpDown.Location = new System.Drawing.Point(70, 106);
+            this.numberUpDown.Maximum = new decimal(new int[] {
+            536870911,
+            0,
+            0,
+            0});
+            this.numberUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numberUpDown.Name = "numberUpDown";
+            this.numberUpDown.Size = new System.Drawing.Size(103, 21);
+            this.numberUpDown.TabIndex = 7;
+            this.numberUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numberUpDown.ValueChanged += new System.EventHandler(this.numberUpDown_ValueChanged);
+            // 
+            // typeList
+            // 
+            this.typeList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.typeList.AutoCompleteCustomSource.AddRange(new string[] {
+            "double",
+            "float",
+            "int32",
+            "int64",
+            "uint32",
+            "uint64",
+            "sint32",
+            "sint64",
+            "fixed32",
+            "fixed64",
+            "sfixed32",
+            "sfixed64",
+            "bool",
+            "string",
+            "bytes"});
+            this.typeList.FormattingEnabled = true;
+            this.typeList.Items.AddRange(new object[] {
+            "double",
+            "float",
+            "int32",
+            "int64",
+            "uint32",
+            "uint64",
+            "sint32",
+            "sint64",
+            "fixed32",
+            "fixed64",
+            "sfixed32",
+            "sfixed64",
+            "bool",
+            "string",
+            "bytes"});
+            this.typeList.Location = new System.Drawing.Point(70, 134);
+            this.typeList.Name = "typeList";
+            this.typeList.Size = new System.Drawing.Size(103, 20);
+            this.typeList.TabIndex = 9;
+            // 
+            // typeLbl
+            // 
+            this.typeLbl.AutoSize = true;
+            this.typeLbl.Location = new System.Drawing.Point(33, 137);
+            this.typeLbl.Name = "typeLbl";
+            this.typeLbl.Size = new System.Drawing.Size(29, 12);
+            this.typeLbl.TabIndex = 8;
+            this.typeLbl.Text = "Type";
+            this.typeLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // logBox
             // 
@@ -207,16 +431,17 @@
             this.logBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logBox.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.logBox.ForeColor = System.Drawing.Color.Yellow;
-            this.logBox.Location = new System.Drawing.Point(0, 0);
+            this.logBox.Location = new System.Drawing.Point(10, 5);
+            this.logBox.Margin = new System.Windows.Forms.Padding(5);
             this.logBox.Multiline = true;
             this.logBox.Name = "logBox";
-            this.logBox.Size = new System.Drawing.Size(562, 179);
+            this.logBox.Size = new System.Drawing.Size(547, 169);
             this.logBox.TabIndex = 0;
             // 
             // CompilerLocalBtn
             // 
             this.CompilerLocalBtn.AutoSize = true;
-            this.CompilerLocalBtn.Location = new System.Drawing.Point(16, 156);
+            this.CompilerLocalBtn.Location = new System.Drawing.Point(16, 192);
             this.CompilerLocalBtn.Name = "CompilerLocalBtn";
             this.CompilerLocalBtn.Size = new System.Drawing.Size(95, 30);
             this.CompilerLocalBtn.TabIndex = 11;
@@ -226,7 +451,7 @@
             // GenerateBtn
             // 
             this.GenerateBtn.AutoSize = true;
-            this.GenerateBtn.Location = new System.Drawing.Point(16, 120);
+            this.GenerateBtn.Location = new System.Drawing.Point(16, 156);
             this.GenerateBtn.Name = "GenerateBtn";
             this.GenerateBtn.Size = new System.Drawing.Size(95, 30);
             this.GenerateBtn.TabIndex = 10;
@@ -268,6 +493,7 @@
             // treeView
             // 
             this.treeView.BackColor = System.Drawing.SystemColors.Window;
+            this.treeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.treeView.ContextMenuStrip = this.contextMenuStrip;
             this.treeView.Location = new System.Drawing.Point(16, 162);
             this.treeView.Name = "treeView";
@@ -275,186 +501,16 @@
             this.treeView.TabIndex = 0;
             this.treeView.Visible = false;
             this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
-            this.treeView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.treeView_MouseClick);
             // 
-            // propertyPanel
+            // SaveAsBtn
             // 
-            this.propertyPanel.BackColor = System.Drawing.SystemColors.Control;
-            this.propertyPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.propertyPanel.Controls.Add(this.nameLbl);
-            this.propertyPanel.Controls.Add(this.nameIpt);
-            this.propertyPanel.Controls.Add(this.restrictLbl);
-            this.propertyPanel.Controls.Add(this.restrictList);
-            this.propertyPanel.Controls.Add(this.numberLbl);
-            this.propertyPanel.Controls.Add(this.numberUpDown);
-            this.propertyPanel.Controls.Add(this.typeLbl);
-            this.propertyPanel.Controls.Add(this.typeList);
-            this.propertyPanel.Controls.Add(this.commentLbl);
-            this.propertyPanel.Controls.Add(this.commentIpt);
-            this.propertyPanel.Controls.Add(this.defaultLbl);
-            this.propertyPanel.Controls.Add(this.defaultIpt);
-            this.propertyPanel.Location = new System.Drawing.Point(125, 36);
-            this.propertyPanel.Name = "propertyPanel";
-            this.propertyPanel.Size = new System.Drawing.Size(401, 178);
-            this.propertyPanel.TabIndex = 0;
-            this.propertyPanel.Visible = false;
-            // 
-            // nameLbl
-            // 
-            this.nameLbl.AutoSize = true;
-            this.nameLbl.Location = new System.Drawing.Point(39, 15);
-            this.nameLbl.Name = "nameLbl";
-            this.nameLbl.Size = new System.Drawing.Size(29, 12);
-            this.nameLbl.TabIndex = 0;
-            this.nameLbl.Text = "Name";
-            this.nameLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // nameIpt
-            // 
-            this.nameIpt.Location = new System.Drawing.Point(76, 11);
-            this.nameIpt.Name = "nameIpt";
-            this.nameIpt.Size = new System.Drawing.Size(121, 21);
-            this.nameIpt.TabIndex = 1;
-            // 
-            // restrictLbl
-            // 
-            this.restrictLbl.AutoSize = true;
-            this.restrictLbl.Location = new System.Drawing.Point(15, 42);
-            this.restrictLbl.Name = "restrictLbl";
-            this.restrictLbl.Size = new System.Drawing.Size(53, 12);
-            this.restrictLbl.TabIndex = 2;
-            this.restrictLbl.Text = "Restrict";
-            this.restrictLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // restrictList
-            // 
-            this.restrictList.FormattingEnabled = true;
-            this.restrictList.Items.AddRange(new object[] {
-            "required",
-            "optional",
-            "repeated"});
-            this.restrictList.Location = new System.Drawing.Point(76, 38);
-            this.restrictList.Name = "restrictList";
-            this.restrictList.Size = new System.Drawing.Size(121, 20);
-            this.restrictList.TabIndex = 6;
-            // 
-            // numberLbl
-            // 
-            this.numberLbl.AutoSize = true;
-            this.numberLbl.Location = new System.Drawing.Point(27, 69);
-            this.numberLbl.Name = "numberLbl";
-            this.numberLbl.Size = new System.Drawing.Size(41, 12);
-            this.numberLbl.TabIndex = 4;
-            this.numberLbl.Text = "Number";
-            this.numberLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // numberUpDown
-            // 
-            this.numberUpDown.Location = new System.Drawing.Point(76, 67);
-            this.numberUpDown.Maximum = new decimal(new int[] {
-            536870911,
-            0,
-            0,
-            0});
-            this.numberUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numberUpDown.Name = "numberUpDown";
-            this.numberUpDown.Size = new System.Drawing.Size(121, 21);
-            this.numberUpDown.TabIndex = 7;
-            this.numberUpDown.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numberUpDown.ValueChanged += new System.EventHandler(this.numberUpDown_ValueChanged);
-            // 
-            // typeLbl
-            // 
-            this.typeLbl.AutoSize = true;
-            this.typeLbl.Location = new System.Drawing.Point(39, 98);
-            this.typeLbl.Name = "typeLbl";
-            this.typeLbl.Size = new System.Drawing.Size(29, 12);
-            this.typeLbl.TabIndex = 8;
-            this.typeLbl.Text = "Type";
-            this.typeLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // typeList
-            // 
-            this.typeList.AutoCompleteCustomSource.AddRange(new string[] {
-            "double",
-            "float",
-            "int32",
-            "int64",
-            "uint32",
-            "uint64",
-            "sint32",
-            "sint64",
-            "fixed32",
-            "fixed64",
-            "sfixed32",
-            "sfixed64",
-            "bool",
-            "string",
-            "bytes"});
-            this.typeList.FormattingEnabled = true;
-            this.typeList.Items.AddRange(new object[] {
-            "double",
-            "float",
-            "int32",
-            "int64",
-            "uint32",
-            "uint64",
-            "sint32",
-            "sint64",
-            "fixed32",
-            "fixed64",
-            "sfixed32",
-            "sfixed64",
-            "bool",
-            "string",
-            "bytes"});
-            this.typeList.Location = new System.Drawing.Point(76, 95);
-            this.typeList.Name = "typeList";
-            this.typeList.Size = new System.Drawing.Size(121, 20);
-            this.typeList.TabIndex = 9;
-            // 
-            // commentLbl
-            // 
-            this.commentLbl.AutoSize = true;
-            this.commentLbl.Location = new System.Drawing.Point(21, 125);
-            this.commentLbl.Name = "commentLbl";
-            this.commentLbl.Size = new System.Drawing.Size(47, 12);
-            this.commentLbl.TabIndex = 10;
-            this.commentLbl.Text = "Comment";
-            this.commentLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // commentIpt
-            // 
-            this.commentIpt.Location = new System.Drawing.Point(76, 121);
-            this.commentIpt.Multiline = true;
-            this.commentIpt.Name = "commentIpt";
-            this.commentIpt.Size = new System.Drawing.Size(308, 44);
-            this.commentIpt.TabIndex = 11;
-            // 
-            // defaultLbl
-            // 
-            this.defaultLbl.AutoSize = true;
-            this.defaultLbl.Location = new System.Drawing.Point(210, 16);
-            this.defaultLbl.Name = "defaultLbl";
-            this.defaultLbl.Size = new System.Drawing.Size(47, 12);
-            this.defaultLbl.TabIndex = 12;
-            this.defaultLbl.Text = "Default";
-            this.defaultLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // defaultIpt
-            // 
-            this.defaultIpt.Location = new System.Drawing.Point(263, 12);
-            this.defaultIpt.Name = "defaultIpt";
-            this.defaultIpt.Size = new System.Drawing.Size(121, 21);
-            this.defaultIpt.TabIndex = 13;
+            this.SaveAsBtn.AutoSize = true;
+            this.SaveAsBtn.Location = new System.Drawing.Point(16, 120);
+            this.SaveAsBtn.Name = "SaveAsBtn";
+            this.SaveAsBtn.Size = new System.Drawing.Size(95, 30);
+            this.SaveAsBtn.TabIndex = 12;
+            this.SaveAsBtn.Text = "Save As";
+            this.SaveAsBtn.UseVisualStyleBackColor = true;
             // 
             // ProtobufEditer
             // 
@@ -462,7 +518,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(694, 459);
             this.Controls.Add(this.treeView);
-            this.Controls.Add(this.propertyPanel);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip);
             this.Name = "ProtobufEditer";
@@ -481,6 +536,10 @@
             this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
             this.propertyPanel.ResumeLayout(false);
             this.propertyPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numberUpDown)).EndInit();
@@ -508,7 +567,6 @@
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.ToolStripMenuItem addEnumToolStripMenuItem;
-        private System.Windows.Forms.Panel propertyPanel;
         private System.Windows.Forms.TreeView treeView;
         private System.Windows.Forms.Label nameLbl;
         private System.Windows.Forms.TextBox nameIpt;
@@ -525,6 +583,9 @@
         private System.Windows.Forms.ToolStripMenuItem addMessageToolStripMenuItem;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
+        private System.Windows.Forms.GroupBox propertyPanel;
+        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.Button SaveAsBtn;
     }
 }
 

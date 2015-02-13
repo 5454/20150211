@@ -14,6 +14,7 @@ namespace ProtobufEditer {
     public partial class ProtobufEditer : Form {
         private Dictionary<string, FileStream> fsList = new Dictionary<string, FileStream>();
 
+        public enum NodeType { Message, Field, Enum }
 
         public ProtobufEditer() {
             InitializeComponent();
@@ -45,26 +46,16 @@ namespace ProtobufEditer {
             }
         }
 
-        private void addToolStripMenuItem_Click(object sender, EventArgs e) {
-            TreeNode node;
-            if (treeView.SelectedNode != null) {
-                node = treeView.SelectedNode.Nodes.Add("NewNode");
-                node.Name = "NewNode";
-            } else {
-                node = treeView.Nodes.Add("NewMessage");
-                node.Name = "NewMessage";
-            }
-            node.Text = node.Name;
-        }
 
         private void treeView_AfterSelect(object sender, TreeViewEventArgs e) {
             if (e.Node.GetNodeCount(true) > 0) {
                 e.Node.Expand();
             }
-            e.Node.ContextMenuStrip = contextMenuStrip;
-            propertyPanel.Top = e.Node.Bounds.Top;
-            propertyPanel.Left = e.Node.Bounds.Left + 50;
+            if (treeView.SelectedNode.Tag.ToString() == NodeType.Message.ToString()) {
+                defaultIpt.Enabled = false;
+            }
             nameIpt.Text = e.Node.Name;
+
         }
 
 
@@ -80,29 +71,12 @@ namespace ProtobufEditer {
             preNumber = numberUpDown.Value;
         }
 
-        private void contextMenuStrip_Opening(object sender, CancelEventArgs e) {
 
-        }
-
-
-        private void tabControl_Click(object sender, EventArgs e) {
-            if (tabControl.TabPages.Count > 0) {
-                tabControl.ContextMenuStrip = contextMenuStrip;
-                closeToolStripMenuItem.Visible = true;
-                addEnumToolStripMenuItem.Visible = false;
-                addFieldToolStripMenuItem.Visible = false;
-                addMessageToolStripMenuItem.Visible = false;
-                deleteToolStripMenuItem.Visible = false;
-            } else {
-                tabControl.ContextMenuStrip = null;
-            }
-        }
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e) {
             fsList[tabControl.SelectedTab.Text].Close();
             fsList.Remove(tabControl.SelectedTab.Text);
             tabControl.TabPages.RemoveAt(tabControl.SelectedIndex);
-
         }
 
         private void OpenBtn_Click(object sender, EventArgs e) {
@@ -111,17 +85,41 @@ namespace ProtobufEditer {
             }
         }
 
-
-        private void treeView_MouseClick(object sender, MouseEventArgs e) {
-            if (treeView.Nodes.Count > 0 && treeView.SelectedNode != null) {
-                propertyPanel.Visible = true;
-            }
-            //addFieldToolStripMenuItem.Visible = true;
-            //addEnumToolStripMenuItem.Visible = true;
-            //addMessageToolStripMenuItem.Visible = true;
-            //deleteToolStripMenuItem.Visible = true;
-            logBox.AppendText("......");
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e) {
+            tabControl.SelectedTab.Controls.Add(treeView);
         }
+
+        private void addMessageToolStripMenuItem_Click(object sender, EventArgs e) {
+            TreeNode node;
+            node = treeView.Nodes.Add("NewMessage");
+            node.Name = "NewMessage";
+            node.Tag = NodeType.Message;
+        }
+
+        private void addFieldToolStripMenuItem_Click(object sender, EventArgs e) {
+            TreeNode node;
+            if (treeView.SelectedNode != null && treeView.SelectedNode.Tag.ToString() != NodeType.Field.ToString()) {
+                node = treeView.SelectedNode.Nodes.Add("NewField");
+                node.Name = "NewField";
+                node.Tag = NodeType.Field;
+            }
+        }
+
+        private void addEnumToolStripMenuItem_Click(object sender, EventArgs e) {
+            TreeNode node;
+            if (treeView.SelectedNode != null && treeView.SelectedNode.Tag.ToString() == NodeType.Message.ToString()) {
+                node = treeView.SelectedNode.Nodes.Add("NewEnum");
+                node.Name = "NewEnum";
+                node.Tag = NodeType.Enum;
+            }
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (MessageBox.Show("Are you sure Delete this Node ?", "Delete Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes) {
+                treeView.SelectedNode.Remove();
+            }
+        }
+
 
 
 
