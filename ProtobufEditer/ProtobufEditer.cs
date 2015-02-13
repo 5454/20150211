@@ -13,6 +13,10 @@ using System.IO;
 namespace ProtobufEditer {
     public partial class ProtobufEditer : Form {
         private Dictionary<string, FileStream> fsList = new Dictionary<string, FileStream>();
+        private List<String> fileString = new List<string>();
+        private int messageCount = 0;
+        private int fieldCount = 0;
+        private int enumCount = 0;
 
         public enum NodeType { Message, Field, Enum }
 
@@ -25,6 +29,26 @@ namespace ProtobufEditer {
             fileName = fileName.Split(new char[] { '.' })[0];
             return fileName;
         }
+
+        public int MessageCount {
+            get {
+                return messageCount += 1;
+            }
+        }
+
+        public int FieldCount {
+            get {
+                return fieldCount += 1;
+            }
+        }
+
+        public int EnumCount {
+            get {
+                return enumCount += 1;
+            }
+        }
+
+
 
         private void AddFileToProcessList(string pathName, bool isOpen) {
             string fileName = GetFileName(pathName);
@@ -51,10 +75,33 @@ namespace ProtobufEditer {
             if (e.Node.GetNodeCount(true) > 0) {
                 e.Node.Expand();
             }
+
             if (treeView.SelectedNode.Tag.ToString() == NodeType.Message.ToString()) {
                 defaultIpt.Enabled = false;
+                restrictList.Enabled = false;
+                numberUpDown.Enabled = false;
+                typeList.Enabled = false;
             }
-            nameIpt.Text = e.Node.Name;
+            if (treeView.SelectedNode.Tag.ToString() == NodeType.Field.ToString()) {
+                defaultIpt.Enabled = true;
+                restrictList.Enabled = true;
+                numberUpDown.Enabled = true;
+                typeList.Enabled = true;
+            }
+            if (treeView.SelectedNode.Tag.ToString() == NodeType.Enum.ToString()) {
+                defaultIpt.Enabled = false;
+                restrictList.Enabled = false;
+                numberUpDown.Enabled = false;
+                typeList.Enabled = false;
+            }
+            if (treeView.SelectedNode.Parent != null && treeView.SelectedNode.Parent.Tag.ToString() == NodeType.Enum.ToString()) {
+                defaultIpt.Enabled = false;
+                restrictList.Enabled = false;
+                numberUpDown.Enabled = true;
+                typeList.Enabled = false;
+            }
+
+            nameIpt.Text = e.Node.Text;
 
         }
 
@@ -91,16 +138,16 @@ namespace ProtobufEditer {
 
         private void addMessageToolStripMenuItem_Click(object sender, EventArgs e) {
             TreeNode node;
-            node = treeView.Nodes.Add("NewMessage");
-            node.Name = "NewMessage";
+            node = treeView.Nodes.Add("NewMessage_" + MessageCount);
+            node.Name = node.Text;
             node.Tag = NodeType.Message;
         }
 
         private void addFieldToolStripMenuItem_Click(object sender, EventArgs e) {
             TreeNode node;
             if (treeView.SelectedNode != null && treeView.SelectedNode.Tag.ToString() != NodeType.Field.ToString()) {
-                node = treeView.SelectedNode.Nodes.Add("NewField");
-                node.Name = "NewField";
+                node = treeView.SelectedNode.Nodes.Add("NewField_" + FieldCount);
+                node.Name = node.Text;
                 node.Tag = NodeType.Field;
             }
         }
@@ -108,8 +155,8 @@ namespace ProtobufEditer {
         private void addEnumToolStripMenuItem_Click(object sender, EventArgs e) {
             TreeNode node;
             if (treeView.SelectedNode != null && treeView.SelectedNode.Tag.ToString() == NodeType.Message.ToString()) {
-                node = treeView.SelectedNode.Nodes.Add("NewEnum");
-                node.Name = "NewEnum";
+                node = treeView.SelectedNode.Nodes.Add("NewEnum_" + EnumCount);
+                node.Name = node.Text;
                 node.Tag = NodeType.Enum;
             }
         }
