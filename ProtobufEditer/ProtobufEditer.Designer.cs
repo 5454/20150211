@@ -29,6 +29,7 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.addRootMessageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addMessageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addFieldToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addEnumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,15 +52,15 @@
             this.numberUpDown = new System.Windows.Forms.NumericUpDown();
             this.typeList = new System.Windows.Forms.ComboBox();
             this.typeLbl = new System.Windows.Forms.Label();
-            this.logBox = new System.Windows.Forms.TextBox();
-            this.CompilerLocalBtn = new System.Windows.Forms.Button();
+            this.logBox = new System.Windows.Forms.RichTextBox();
+            this.SaveAsBtn = new System.Windows.Forms.Button();
+            this.CompilerConfig = new System.Windows.Forms.Button();
             this.GenerateBtn = new System.Windows.Forms.Button();
             this.NewBtn = new System.Windows.Forms.Button();
             this.SaveBtn = new System.Windows.Forms.Button();
             this.OpenBtn = new System.Windows.Forms.Button();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.treeView = new System.Windows.Forms.TreeView();
-            this.SaveAsBtn = new System.Windows.Forms.Button();
             this.statusStrip.SuspendLayout();
             this.contextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -97,57 +98,65 @@
             // 
             this.openFileDialog.DefaultExt = "proto";
             this.openFileDialog.FileName = "openFileDialog";
-            this.openFileDialog.Filter = "Protobuf File | *.proto";
+            this.openFileDialog.Filter = "Protobuf File|*.proto";
             // 
             // saveFileDialog
             // 
             this.saveFileDialog.DefaultExt = "proto";
-            this.saveFileDialog.Filter = "Protobuf File | *.proto";
+            this.saveFileDialog.Filter = "Protobuf File|*.proto";
             this.saveFileDialog.Title = "New Protobuf File";
             // 
             // contextMenuStrip
             // 
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addRootMessageToolStripMenuItem,
             this.addMessageToolStripMenuItem,
             this.addFieldToolStripMenuItem,
             this.addEnumToolStripMenuItem,
             this.deleteToolStripMenuItem,
             this.closeToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(146, 114);
+            this.contextMenuStrip.Size = new System.Drawing.Size(174, 136);
+            // 
+            // addRootMessageToolStripMenuItem
+            // 
+            this.addRootMessageToolStripMenuItem.Name = "addRootMessageToolStripMenuItem";
+            this.addRootMessageToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.addRootMessageToolStripMenuItem.Text = "Add Root Message";
+            this.addRootMessageToolStripMenuItem.Click += new System.EventHandler(this.addRootMessageToolStripMenuItem_Click);
             // 
             // addMessageToolStripMenuItem
             // 
             this.addMessageToolStripMenuItem.Name = "addMessageToolStripMenuItem";
-            this.addMessageToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.addMessageToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.addMessageToolStripMenuItem.Text = "Add Message";
             this.addMessageToolStripMenuItem.Click += new System.EventHandler(this.addMessageToolStripMenuItem_Click);
             // 
             // addFieldToolStripMenuItem
             // 
             this.addFieldToolStripMenuItem.Name = "addFieldToolStripMenuItem";
-            this.addFieldToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.addFieldToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.addFieldToolStripMenuItem.Text = "Add Field";
             this.addFieldToolStripMenuItem.Click += new System.EventHandler(this.addFieldToolStripMenuItem_Click);
             // 
             // addEnumToolStripMenuItem
             // 
             this.addEnumToolStripMenuItem.Name = "addEnumToolStripMenuItem";
-            this.addEnumToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.addEnumToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.addEnumToolStripMenuItem.Text = "Add Enum";
             this.addEnumToolStripMenuItem.Click += new System.EventHandler(this.addEnumToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -168,7 +177,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.SaveAsBtn);
-            this.splitContainer1.Panel2.Controls.Add(this.CompilerLocalBtn);
+            this.splitContainer1.Panel2.Controls.Add(this.CompilerConfig);
             this.splitContainer1.Panel2.Controls.Add(this.GenerateBtn);
             this.splitContainer1.Panel2.Controls.Add(this.NewBtn);
             this.splitContainer1.Panel2.Controls.Add(this.SaveBtn);
@@ -228,6 +237,7 @@
             this.tabControl.Margin = new System.Windows.Forms.Padding(5);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
+            this.tabControl.ShowToolTips = true;
             this.tabControl.Size = new System.Drawing.Size(338, 234);
             this.tabControl.TabIndex = 0;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
@@ -427,26 +437,35 @@
             // logBox
             // 
             this.logBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.logBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.logBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.logBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.logBox.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.logBox.ForeColor = System.Drawing.Color.Yellow;
             this.logBox.Location = new System.Drawing.Point(10, 5);
-            this.logBox.Margin = new System.Windows.Forms.Padding(5);
-            this.logBox.Multiline = true;
             this.logBox.Name = "logBox";
             this.logBox.Size = new System.Drawing.Size(547, 169);
-            this.logBox.TabIndex = 0;
+            this.logBox.TabIndex = 1;
+            this.logBox.Text = "";
+            this.logBox.WordWrap = false;
             // 
-            // CompilerLocalBtn
+            // SaveAsBtn
             // 
-            this.CompilerLocalBtn.AutoSize = true;
-            this.CompilerLocalBtn.Location = new System.Drawing.Point(16, 192);
-            this.CompilerLocalBtn.Name = "CompilerLocalBtn";
-            this.CompilerLocalBtn.Size = new System.Drawing.Size(95, 30);
-            this.CompilerLocalBtn.TabIndex = 11;
-            this.CompilerLocalBtn.Text = "CompilerLocal";
-            this.CompilerLocalBtn.UseVisualStyleBackColor = true;
+            this.SaveAsBtn.AutoSize = true;
+            this.SaveAsBtn.Location = new System.Drawing.Point(16, 120);
+            this.SaveAsBtn.Name = "SaveAsBtn";
+            this.SaveAsBtn.Size = new System.Drawing.Size(95, 30);
+            this.SaveAsBtn.TabIndex = 12;
+            this.SaveAsBtn.Text = "Save As";
+            this.SaveAsBtn.UseVisualStyleBackColor = true;
+            // 
+            // CompilerConfig
+            // 
+            this.CompilerConfig.AutoSize = true;
+            this.CompilerConfig.Location = new System.Drawing.Point(16, 192);
+            this.CompilerConfig.Name = "CompilerConfig";
+            this.CompilerConfig.Size = new System.Drawing.Size(99, 30);
+            this.CompilerConfig.TabIndex = 11;
+            this.CompilerConfig.Text = "CompilerConfig";
+            this.CompilerConfig.UseVisualStyleBackColor = true;
             // 
             // GenerateBtn
             // 
@@ -502,16 +521,6 @@
             this.treeView.Visible = false;
             this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
             // 
-            // SaveAsBtn
-            // 
-            this.SaveAsBtn.AutoSize = true;
-            this.SaveAsBtn.Location = new System.Drawing.Point(16, 120);
-            this.SaveAsBtn.Name = "SaveAsBtn";
-            this.SaveAsBtn.Size = new System.Drawing.Size(95, 30);
-            this.SaveAsBtn.TabIndex = 12;
-            this.SaveAsBtn.Text = "Save As";
-            this.SaveAsBtn.UseVisualStyleBackColor = true;
-            // 
             // ProtobufEditer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -533,7 +542,6 @@
             this.splitContainer1.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
-            this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.splitContainer3.Panel1.ResumeLayout(false);
@@ -562,8 +570,7 @@
         private System.Windows.Forms.Button NewBtn;
         private System.Windows.Forms.Button SaveBtn;
         private System.Windows.Forms.Button OpenBtn;
-        private System.Windows.Forms.Button CompilerLocalBtn;
-        private System.Windows.Forms.TextBox logBox;
+        private System.Windows.Forms.Button CompilerConfig;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.ToolStripMenuItem addEnumToolStripMenuItem;
@@ -586,6 +593,8 @@
         private System.Windows.Forms.GroupBox propertyPanel;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.Button SaveAsBtn;
+        private System.Windows.Forms.ToolStripMenuItem addRootMessageToolStripMenuItem;
+        private System.Windows.Forms.RichTextBox logBox;
     }
 }
 
