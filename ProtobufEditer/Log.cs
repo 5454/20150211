@@ -27,7 +27,7 @@ namespace ProtobufEditer {
             for (int i = 0; i < other.Length; i++) {
                 otherOutput += other[i] + " ";
             }
-            return DateTime.Now.ToString() + " " + ot + " " + Protobuf + " " + tt + " >>> " + otherOutput + "\n";
+            return DateTime.Now.ToString() + " " + ot + " " + Protobuf + " " + tt + " → " + otherOutput + "\n";
         }
 
     }

@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="CompilerCommand.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="EditFiles.cs" />
     <Compile Include="Kit.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="ProtobufEditer.cs">

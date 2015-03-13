@@ -43,16 +43,17 @@
             this.nameLbl = new System.Windows.Forms.Label();
             this.restrictLbl = new System.Windows.Forms.Label();
             this.nameIpt = new System.Windows.Forms.TextBox();
-            this.defaultIpt = new System.Windows.Forms.TextBox();
+            this.defaultValueIpt = new System.Windows.Forms.TextBox();
             this.defaultLbl = new System.Windows.Forms.Label();
             this.restrictList = new System.Windows.Forms.ComboBox();
             this.commentIpt = new System.Windows.Forms.TextBox();
             this.numberLbl = new System.Windows.Forms.Label();
             this.commentLbl = new System.Windows.Forms.Label();
-            this.numberUpDown = new System.Windows.Forms.NumericUpDown();
-            this.typeList = new System.Windows.Forms.ComboBox();
+            this.numberTagUpDown = new System.Windows.Forms.NumericUpDown();
+            this.dataTypeList = new System.Windows.Forms.ComboBox();
             this.typeLbl = new System.Windows.Forms.Label();
             this.logBox = new System.Windows.Forms.RichTextBox();
+            this.AutoGenerateXMLCheckBox = new System.Windows.Forms.CheckBox();
             this.SaveAsBtn = new System.Windows.Forms.Button();
             this.CompilerConfig = new System.Windows.Forms.Button();
             this.GenerateBtn = new System.Windows.Forms.Button();
@@ -76,16 +77,16 @@
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
             this.propertyPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numberUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numberTagUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // statusStrip
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripProgressBar});
-            this.statusStrip.Location = new System.Drawing.Point(0, 437);
+            this.statusStrip.Location = new System.Drawing.Point(0, 480);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(694, 22);
+            this.statusStrip.Size = new System.Drawing.Size(810, 22);
             this.statusStrip.TabIndex = 0;
             this.statusStrip.Text = "statusStrip1";
             // 
@@ -172,10 +173,11 @@
             // 
             this.splitContainer1.Panel1.Controls.Add(this.splitContainer2);
             this.splitContainer1.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.splitContainer1.Panel1MinSize = 100;
+            this.splitContainer1.Panel1MinSize = 570;
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.AutoGenerateXMLCheckBox);
             this.splitContainer1.Panel2.Controls.Add(this.SaveAsBtn);
             this.splitContainer1.Panel2.Controls.Add(this.CompilerConfig);
             this.splitContainer1.Panel2.Controls.Add(this.GenerateBtn);
@@ -183,9 +185,9 @@
             this.splitContainer1.Panel2.Controls.Add(this.SaveBtn);
             this.splitContainer1.Panel2.Controls.Add(this.OpenBtn);
             this.splitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.splitContainer1.Panel2MinSize = 120;
-            this.splitContainer1.Size = new System.Drawing.Size(694, 437);
-            this.splitContainer1.SplitterDistance = 562;
+            this.splitContainer1.Panel2MinSize = 150;
+            this.splitContainer1.Size = new System.Drawing.Size(810, 480);
+            this.splitContainer1.SplitterDistance = 652;
             this.splitContainer1.TabIndex = 7;
             // 
             // splitContainer2
@@ -204,10 +206,10 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.logBox);
-            this.splitContainer2.Panel2.Padding = new System.Windows.Forms.Padding(10, 5, 5, 5);
+            this.splitContainer2.Panel2.Padding = new System.Windows.Forms.Padding(10, 5, 10, 10);
             this.splitContainer2.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.splitContainer2.Size = new System.Drawing.Size(562, 437);
-            this.splitContainer2.SplitterDistance = 254;
+            this.splitContainer2.Size = new System.Drawing.Size(652, 480);
+            this.splitContainer2.SplitterDistance = 278;
             this.splitContainer2.TabIndex = 0;
             // 
             // splitContainer3
@@ -226,8 +228,8 @@
             this.splitContainer3.Panel2.Controls.Add(this.propertyPanel);
             this.splitContainer3.Panel2.Padding = new System.Windows.Forms.Padding(5);
             this.splitContainer3.Panel2MinSize = 200;
-            this.splitContainer3.Size = new System.Drawing.Size(552, 244);
-            this.splitContainer3.SplitterDistance = 348;
+            this.splitContainer3.Size = new System.Drawing.Size(642, 268);
+            this.splitContainer3.SplitterDistance = 373;
             this.splitContainer3.TabIndex = 2;
             // 
             // tabControl
@@ -238,7 +240,7 @@
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.ShowToolTips = true;
-            this.tabControl.Size = new System.Drawing.Size(338, 234);
+            this.tabControl.Size = new System.Drawing.Size(363, 258);
             this.tabControl.TabIndex = 0;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -247,20 +249,20 @@
             this.propertyPanel.Controls.Add(this.nameLbl);
             this.propertyPanel.Controls.Add(this.restrictLbl);
             this.propertyPanel.Controls.Add(this.nameIpt);
-            this.propertyPanel.Controls.Add(this.defaultIpt);
+            this.propertyPanel.Controls.Add(this.defaultValueIpt);
             this.propertyPanel.Controls.Add(this.defaultLbl);
             this.propertyPanel.Controls.Add(this.restrictList);
             this.propertyPanel.Controls.Add(this.commentIpt);
             this.propertyPanel.Controls.Add(this.numberLbl);
             this.propertyPanel.Controls.Add(this.commentLbl);
-            this.propertyPanel.Controls.Add(this.numberUpDown);
-            this.propertyPanel.Controls.Add(this.typeList);
+            this.propertyPanel.Controls.Add(this.numberTagUpDown);
+            this.propertyPanel.Controls.Add(this.dataTypeList);
             this.propertyPanel.Controls.Add(this.typeLbl);
             this.propertyPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.propertyPanel.Location = new System.Drawing.Point(5, 5);
             this.propertyPanel.Margin = new System.Windows.Forms.Padding(5);
             this.propertyPanel.Name = "propertyPanel";
-            this.propertyPanel.Size = new System.Drawing.Size(190, 234);
+            this.propertyPanel.Size = new System.Drawing.Size(255, 258);
             this.propertyPanel.TabIndex = 1;
             this.propertyPanel.TabStop = false;
             this.propertyPanel.Text = "Property";
@@ -268,7 +270,7 @@
             // nameLbl
             // 
             this.nameLbl.AutoSize = true;
-            this.nameLbl.Location = new System.Drawing.Point(33, 27);
+            this.nameLbl.Location = new System.Drawing.Point(59, 27);
             this.nameLbl.Name = "nameLbl";
             this.nameLbl.Size = new System.Drawing.Size(29, 12);
             this.nameLbl.TabIndex = 0;
@@ -278,7 +280,7 @@
             // restrictLbl
             // 
             this.restrictLbl.AutoSize = true;
-            this.restrictLbl.Location = new System.Drawing.Point(9, 81);
+            this.restrictLbl.Location = new System.Drawing.Point(35, 81);
             this.restrictLbl.Name = "restrictLbl";
             this.restrictLbl.Size = new System.Drawing.Size(53, 12);
             this.restrictLbl.TabIndex = 2;
@@ -289,28 +291,30 @@
             // 
             this.nameIpt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.nameIpt.Location = new System.Drawing.Point(70, 23);
+            this.nameIpt.Location = new System.Drawing.Point(96, 23);
             this.nameIpt.Name = "nameIpt";
-            this.nameIpt.Size = new System.Drawing.Size(103, 21);
+            this.nameIpt.Size = new System.Drawing.Size(145, 21);
             this.nameIpt.TabIndex = 1;
+            this.nameIpt.TextChanged += new System.EventHandler(this.nameIpt_TextChanged);
             // 
-            // defaultIpt
+            // defaultValueIpt
             // 
-            this.defaultIpt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.defaultValueIpt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.defaultIpt.Location = new System.Drawing.Point(70, 50);
-            this.defaultIpt.Name = "defaultIpt";
-            this.defaultIpt.Size = new System.Drawing.Size(103, 21);
-            this.defaultIpt.TabIndex = 13;
+            this.defaultValueIpt.Location = new System.Drawing.Point(96, 50);
+            this.defaultValueIpt.Name = "defaultValueIpt";
+            this.defaultValueIpt.Size = new System.Drawing.Size(145, 21);
+            this.defaultValueIpt.TabIndex = 13;
+            this.defaultValueIpt.TextChanged += new System.EventHandler(this.defaultIpt_TextChanged);
             // 
             // defaultLbl
             // 
             this.defaultLbl.AutoSize = true;
-            this.defaultLbl.Location = new System.Drawing.Point(17, 54);
+            this.defaultLbl.Location = new System.Drawing.Point(11, 54);
             this.defaultLbl.Name = "defaultLbl";
-            this.defaultLbl.Size = new System.Drawing.Size(47, 12);
+            this.defaultLbl.Size = new System.Drawing.Size(77, 12);
             this.defaultLbl.TabIndex = 12;
-            this.defaultLbl.Text = "Default";
+            this.defaultLbl.Text = "DefaultValue";
             this.defaultLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // restrictList
@@ -322,71 +326,74 @@
             "required",
             "optional",
             "repeated"});
-            this.restrictList.Location = new System.Drawing.Point(70, 77);
+            this.restrictList.Location = new System.Drawing.Point(96, 77);
             this.restrictList.Name = "restrictList";
-            this.restrictList.Size = new System.Drawing.Size(103, 20);
+            this.restrictList.Size = new System.Drawing.Size(145, 20);
             this.restrictList.TabIndex = 6;
+            this.restrictList.SelectedIndexChanged += new System.EventHandler(this.restrictList_SelectedIndexChanged);
             // 
             // commentIpt
             // 
-            this.commentIpt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.commentIpt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.commentIpt.Location = new System.Drawing.Point(70, 160);
+            this.commentIpt.Location = new System.Drawing.Point(96, 160);
             this.commentIpt.Multiline = true;
             this.commentIpt.Name = "commentIpt";
-            this.commentIpt.Size = new System.Drawing.Size(103, 57);
+            this.commentIpt.Size = new System.Drawing.Size(145, 84);
             this.commentIpt.TabIndex = 11;
+            this.commentIpt.TextChanged += new System.EventHandler(this.commentIpt_TextChanged);
             // 
             // numberLbl
             // 
             this.numberLbl.AutoSize = true;
-            this.numberLbl.Location = new System.Drawing.Point(21, 108);
+            this.numberLbl.Location = new System.Drawing.Point(29, 108);
             this.numberLbl.Name = "numberLbl";
-            this.numberLbl.Size = new System.Drawing.Size(41, 12);
+            this.numberLbl.Size = new System.Drawing.Size(59, 12);
             this.numberLbl.TabIndex = 4;
-            this.numberLbl.Text = "Number";
+            this.numberLbl.Text = "NumberTag";
             this.numberLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // commentLbl
             // 
             this.commentLbl.AutoSize = true;
-            this.commentLbl.Location = new System.Drawing.Point(15, 164);
+            this.commentLbl.Location = new System.Drawing.Point(41, 164);
             this.commentLbl.Name = "commentLbl";
             this.commentLbl.Size = new System.Drawing.Size(47, 12);
             this.commentLbl.TabIndex = 10;
             this.commentLbl.Text = "Comment";
             this.commentLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // numberUpDown
+            // numberTagUpDown
             // 
-            this.numberUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.numberTagUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.numberUpDown.Location = new System.Drawing.Point(70, 106);
-            this.numberUpDown.Maximum = new decimal(new int[] {
+            this.numberTagUpDown.Location = new System.Drawing.Point(96, 106);
+            this.numberTagUpDown.Maximum = new decimal(new int[] {
             536870911,
             0,
             0,
             0});
-            this.numberUpDown.Minimum = new decimal(new int[] {
+            this.numberTagUpDown.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numberUpDown.Name = "numberUpDown";
-            this.numberUpDown.Size = new System.Drawing.Size(103, 21);
-            this.numberUpDown.TabIndex = 7;
-            this.numberUpDown.Value = new decimal(new int[] {
+            this.numberTagUpDown.Name = "numberTagUpDown";
+            this.numberTagUpDown.Size = new System.Drawing.Size(145, 21);
+            this.numberTagUpDown.TabIndex = 7;
+            this.numberTagUpDown.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numberUpDown.ValueChanged += new System.EventHandler(this.numberUpDown_ValueChanged);
+            this.numberTagUpDown.ValueChanged += new System.EventHandler(this.numberUpDown_ValueChanged);
             // 
-            // typeList
+            // dataTypeList
             // 
-            this.typeList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dataTypeList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.typeList.AutoCompleteCustomSource.AddRange(new string[] {
+            this.dataTypeList.AutoCompleteCustomSource.AddRange(new string[] {
             "double",
             "float",
             "int32",
@@ -402,8 +409,8 @@
             "bool",
             "string",
             "bytes"});
-            this.typeList.FormattingEnabled = true;
-            this.typeList.Items.AddRange(new object[] {
+            this.dataTypeList.FormattingEnabled = true;
+            this.dataTypeList.Items.AddRange(new object[] {
             "double",
             "float",
             "int32",
@@ -419,19 +426,20 @@
             "bool",
             "string",
             "bytes"});
-            this.typeList.Location = new System.Drawing.Point(70, 134);
-            this.typeList.Name = "typeList";
-            this.typeList.Size = new System.Drawing.Size(103, 20);
-            this.typeList.TabIndex = 9;
+            this.dataTypeList.Location = new System.Drawing.Point(96, 134);
+            this.dataTypeList.Name = "dataTypeList";
+            this.dataTypeList.Size = new System.Drawing.Size(145, 20);
+            this.dataTypeList.TabIndex = 9;
+            this.dataTypeList.SelectedIndexChanged += new System.EventHandler(this.typeList_SelectedIndexChanged);
             // 
             // typeLbl
             // 
             this.typeLbl.AutoSize = true;
-            this.typeLbl.Location = new System.Drawing.Point(33, 137);
+            this.typeLbl.Location = new System.Drawing.Point(35, 137);
             this.typeLbl.Name = "typeLbl";
-            this.typeLbl.Size = new System.Drawing.Size(29, 12);
+            this.typeLbl.Size = new System.Drawing.Size(53, 12);
             this.typeLbl.TabIndex = 8;
-            this.typeLbl.Text = "Type";
+            this.typeLbl.Text = "DataType";
             this.typeLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // logBox
@@ -439,20 +447,34 @@
             this.logBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.logBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.logBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.logBox.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.logBox.ForeColor = System.Drawing.Color.Yellow;
             this.logBox.Location = new System.Drawing.Point(10, 5);
+            this.logBox.Margin = new System.Windows.Forms.Padding(0);
             this.logBox.Name = "logBox";
-            this.logBox.Size = new System.Drawing.Size(547, 169);
+            this.logBox.Size = new System.Drawing.Size(632, 183);
             this.logBox.TabIndex = 1;
             this.logBox.Text = "";
             this.logBox.WordWrap = false;
+            // 
+            // AutoGenerateXMLCheckBox
+            // 
+            this.AutoGenerateXMLCheckBox.AutoSize = true;
+            this.AutoGenerateXMLCheckBox.Checked = true;
+            this.AutoGenerateXMLCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.AutoGenerateXMLCheckBox.Location = new System.Drawing.Point(16, 230);
+            this.AutoGenerateXMLCheckBox.Name = "AutoGenerateXMLCheckBox";
+            this.AutoGenerateXMLCheckBox.Size = new System.Drawing.Size(112, 16);
+            this.AutoGenerateXMLCheckBox.TabIndex = 13;
+            this.AutoGenerateXMLCheckBox.Text = "AutoGenerateXML";
+            this.AutoGenerateXMLCheckBox.UseVisualStyleBackColor = true;
             // 
             // SaveAsBtn
             // 
             this.SaveAsBtn.AutoSize = true;
             this.SaveAsBtn.Location = new System.Drawing.Point(16, 120);
             this.SaveAsBtn.Name = "SaveAsBtn";
-            this.SaveAsBtn.Size = new System.Drawing.Size(95, 30);
+            this.SaveAsBtn.Size = new System.Drawing.Size(112, 30);
             this.SaveAsBtn.TabIndex = 12;
             this.SaveAsBtn.Text = "Save As";
             this.SaveAsBtn.UseVisualStyleBackColor = true;
@@ -462,7 +484,7 @@
             this.CompilerConfig.AutoSize = true;
             this.CompilerConfig.Location = new System.Drawing.Point(16, 192);
             this.CompilerConfig.Name = "CompilerConfig";
-            this.CompilerConfig.Size = new System.Drawing.Size(99, 30);
+            this.CompilerConfig.Size = new System.Drawing.Size(112, 30);
             this.CompilerConfig.TabIndex = 11;
             this.CompilerConfig.Text = "CompilerConfig";
             this.CompilerConfig.UseVisualStyleBackColor = true;
@@ -472,7 +494,7 @@
             this.GenerateBtn.AutoSize = true;
             this.GenerateBtn.Location = new System.Drawing.Point(16, 156);
             this.GenerateBtn.Name = "GenerateBtn";
-            this.GenerateBtn.Size = new System.Drawing.Size(95, 30);
+            this.GenerateBtn.Size = new System.Drawing.Size(112, 30);
             this.GenerateBtn.TabIndex = 10;
             this.GenerateBtn.Text = "Generate";
             this.GenerateBtn.UseVisualStyleBackColor = true;
@@ -482,7 +504,7 @@
             this.NewBtn.AutoSize = true;
             this.NewBtn.Location = new System.Drawing.Point(16, 12);
             this.NewBtn.Name = "NewBtn";
-            this.NewBtn.Size = new System.Drawing.Size(95, 30);
+            this.NewBtn.Size = new System.Drawing.Size(112, 30);
             this.NewBtn.TabIndex = 9;
             this.NewBtn.Text = "New";
             this.NewBtn.UseVisualStyleBackColor = true;
@@ -493,17 +515,18 @@
             this.SaveBtn.AutoSize = true;
             this.SaveBtn.Location = new System.Drawing.Point(16, 84);
             this.SaveBtn.Name = "SaveBtn";
-            this.SaveBtn.Size = new System.Drawing.Size(95, 30);
+            this.SaveBtn.Size = new System.Drawing.Size(112, 30);
             this.SaveBtn.TabIndex = 8;
             this.SaveBtn.Text = "Save";
             this.SaveBtn.UseVisualStyleBackColor = true;
+            this.SaveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
             // 
             // OpenBtn
             // 
             this.OpenBtn.AutoSize = true;
             this.OpenBtn.Location = new System.Drawing.Point(16, 48);
             this.OpenBtn.Name = "OpenBtn";
-            this.OpenBtn.Size = new System.Drawing.Size(95, 30);
+            this.OpenBtn.Size = new System.Drawing.Size(112, 30);
             this.OpenBtn.TabIndex = 7;
             this.OpenBtn.Text = "Open";
             this.OpenBtn.UseVisualStyleBackColor = true;
@@ -525,10 +548,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(694, 459);
+            this.ClientSize = new System.Drawing.Size(810, 502);
             this.Controls.Add(this.treeView);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip);
+            this.MinimumSize = new System.Drawing.Size(740, 488);
             this.Name = "ProtobufEditer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ProtobufEditer";
@@ -550,7 +574,7 @@
             this.splitContainer3.ResumeLayout(false);
             this.propertyPanel.ResumeLayout(false);
             this.propertyPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numberUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numberTagUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -580,13 +604,13 @@
         private System.Windows.Forms.Label restrictLbl;
         private System.Windows.Forms.Label numberLbl;
         private System.Windows.Forms.ComboBox restrictList;
-        private System.Windows.Forms.NumericUpDown numberUpDown;
+        private System.Windows.Forms.NumericUpDown numberTagUpDown;
         private System.Windows.Forms.Label typeLbl;
-        private System.Windows.Forms.ComboBox typeList;
+        private System.Windows.Forms.ComboBox dataTypeList;
         private System.Windows.Forms.Label commentLbl;
         private System.Windows.Forms.TextBox commentIpt;
         private System.Windows.Forms.Label defaultLbl;
-        private System.Windows.Forms.TextBox defaultIpt;
+        private System.Windows.Forms.TextBox defaultValueIpt;
         private System.Windows.Forms.ToolStripMenuItem addMessageToolStripMenuItem;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
@@ -595,6 +619,7 @@
         private System.Windows.Forms.Button SaveAsBtn;
         private System.Windows.Forms.ToolStripMenuItem addRootMessageToolStripMenuItem;
         private System.Windows.Forms.RichTextBox logBox;
+        private System.Windows.Forms.CheckBox AutoGenerateXMLCheckBox;
     }
 }
 
